@@ -1,0 +1,2 @@
+http://localhost:8080/categories/2
+http://localhost:8080/categories/3
