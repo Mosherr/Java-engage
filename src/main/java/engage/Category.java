@@ -1,33 +1,55 @@
 package engage;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+/**
+ * Category Model used to define an object/db table
+ */
 @Entity
-public class Person {
+@JsonIgnoreProperties({"children"})
+public class Category {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 
-	private String firstName;
-	private String lastName;
+	@NotNull
+	private String name;
 
-	public String getFirstName() {
-		return firstName;
+	@OneToMany
+	@JoinColumn(name = "parent_id")
+	private List<Category> children;
+
+	@ManyToOne
+	@JoinColumn(name="parent_id")
+	private Category parent;
+
+
+	public String getName() {
+		return name;
 	}
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public Category getParent() {
+		return parent;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setParent(Category parent) {
+		this.parent = parent;
+	}
+
+	public List<Category> getChildren() {
+		return children;
+	}
+
+	public void setChildren(Category children) {
+		this.children.add(children);
 	}
 }
