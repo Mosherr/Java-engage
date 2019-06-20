@@ -1,4 +1,6 @@
-package engage;
+package com.dmscherr.engage.repository;
+
+import com.dmscherr.engage.model.Category;
 
 import java.util.List;
 

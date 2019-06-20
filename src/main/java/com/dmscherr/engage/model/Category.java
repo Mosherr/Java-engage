@@ -1,4 +1,4 @@
-package engage;
+package com.dmscherr.engage.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

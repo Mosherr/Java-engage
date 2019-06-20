@@ -1,8 +1,8 @@
-package engage;
+package com.dmscherr.engage;
 
-import engage.Application;
-import engage.Category;
-import engage.CategoryController;
+import com.dmscherr.engage.Application;
+import com.dmscherr.engage.model.Category;
+import com.dmscherr.engage.controller.CategoryController;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

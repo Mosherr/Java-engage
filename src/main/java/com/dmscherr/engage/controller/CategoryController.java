@@ -1,4 +1,8 @@
-package engage;
+package com.dmscherr.engage.controller;
+
+import com.dmscherr.engage.model.Category;
+import com.dmscherr.engage.repository.CategoryRepository;
+import com.dmscherr.engage.exception.ResourceNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
