@@ -3,6 +3,7 @@ package com.dmscherr.engage.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -10,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Category Model used to define an object/db table
  */
 @Entity
+@Table(name = "categories")
 @JsonIgnoreProperties({"children"})
 public class Category {
 
@@ -20,14 +22,17 @@ public class Category {
 	@NotNull
 	private String name;
 
-	@OneToMany
-	@JoinColumn(name = "parent_id")
-	private List<Category> children;
-
 	@ManyToOne
 	@JoinColumn(name="parent_id")
 	private Category parent;
 
+	// Delete the child row if the parent is removed
+	@OneToMany(mappedBy = "parent", cascade = CascadeType.REMOVE, orphanRemoval = true)
+	private List<Category> children = new ArrayList<Category>();
+
+	public long getId() {
+		return id;
+	}
 
 	public String getName() {
 		return name;
